@@ -3,7 +3,7 @@ class Solution(object):
         p1=m-1
         p2=n-1
         p=m+n-1
-        while p1>=0 and p2>=0:
+        while p1>=0 and p2>=0: #starting from the back to beginning
             if nums1[p1]>nums2[p2]:
                 nums1[p]=nums1[p1]
                 p1-=1
@@ -11,7 +11,7 @@ class Solution(object):
                 nums1[p]=nums2[p2]
                 p2-=1
             p-=1
-        while p2>=0:
+        while p2>=0: #copy rest of array2 into empty spaces of array1
             nums1[p]=nums2[p2]
             p2-=1
             p-=1
