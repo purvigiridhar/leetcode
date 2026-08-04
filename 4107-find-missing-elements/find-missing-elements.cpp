@@ -1,15 +1,17 @@
 class Solution {
 public:
     vector<int> findMissingElements(vector<int>& nums) {
-        auto [min_addr, max_addr]= minmax_element(nums.begin(),nums.end());
-        int min = *min_addr;
-        int max = *max_addr;
-        std::unordered_set<int> num_set(nums.begin(),nums.end());
+        auto [min_it, max_it] = std::minmax_element(nums.begin(), nums.end());
+        int min_val = *min_it;
+        int max_val = *max_it;
+        
+        // Step 2: Populate the hash set
+        std::unordered_set<int> num_set(nums.begin(), nums.end());
         std::vector<int> missing;
-        for(int i=min+1; i<max ; i++)
-        {
-            if(num_set.count(i)==0)
-            {
+        
+        // Step 3 & 4: Collect missing elements sequentially
+        for (int i = min_val + 1; i < max_val; ++i) {
+            if (num_set.find(i) == num_set.end()) {
                 missing.push_back(i);
             }
         }
