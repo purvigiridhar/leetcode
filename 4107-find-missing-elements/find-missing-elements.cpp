@@ -11,9 +11,8 @@ public:
         
         // Step 3 & 4: Collect missing elements sequentially
         for (int i = min_val + 1; i < max_val; ++i) {
-            if (num_set.find(i) == num_set.end()) {
+            if (!num_set.contains(i))
                 missing.push_back(i);
-            }
         }
         return missing;
     }
