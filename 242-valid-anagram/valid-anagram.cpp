@@ -1,15 +1,19 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        int S = s.size(), T = t.size();
-        if(S!=T)    return false;
-        unordered_map<char,int>hashmap_S;
-        unordered_map<char,int>hashmap_T;
-        for(int i=0;i<S;i++)
+        if(s.length()!=t.length())
+            return false;
+        vector<int>count(26,0); //vector with all values initialized to 0
+        for(int i=0;i<s.length();i++)
         {
-            hashmap_S[s[i]]++;
-            hashmap_T[t[i]]++;
+            count[s[i]-'a']++;
+            count[t[i]-'a']--;
         }
-        return hashmap_S==hashmap_T;
+        for(int val : count)
+        {
+            if(val!=0)
+                return false;
+        }
+        return true;
     }
 };
